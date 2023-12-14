@@ -9,7 +9,7 @@ void handle_getline_error(ssize_t read)
 	{
 		if (feof(stdin))
 		{
-			break;
+			return;;
 		}
 		perror("Error (getline)");
 		exit(EXIT_FAILURE);
@@ -21,7 +21,7 @@ void handle_getline_error(ssize_t read)
  */
 void handle_fork_error(pid_t baby_pid)
 {
-	if (babypid == -1)
+	if (baby_pid == -1)
 	{
 		perror("Error (fork)");
 		exit(EXIT_FAILURE);

@@ -4,7 +4,7 @@
  * handle_built_in - a function that implements built-in commands
  * @usercmd: user command to execute
  */
-void handle_built_in(char *usercmd)
+char *handle_built_in(char *usercmd)
 {
 	if (mystrcmp(usercmd, "exit") == 0)
 	{
@@ -14,5 +14,6 @@ void handle_built_in(char *usercmd)
 	{
 		p_ssenv();
 	}
+	return (NULL);
 }
 

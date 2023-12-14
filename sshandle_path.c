@@ -7,7 +7,7 @@ void handle_path(char *usercmd)
 {
 	char *buffer = mystrdup(usercmd);
 	char *arg;
-	char **env;
+	char **env = environ;
 	char *fullpath;
 
 	if (buffer == NULL)

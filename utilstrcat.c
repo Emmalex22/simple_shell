@@ -1,18 +1,14 @@
 #include "shell.h"
-/**
- * mystrcat - concatenate two or more strings
- * @n: no of arguements
- * Return: adress of the concatenated string
- * @...: variable arguments strings to concatenate
- */
-char mystrcat(int n, …)
+
+char *mystrcat(int n, ...)
 {
 	char *dest;
 	const char *neo_string;
 	size_t full_len = 0;
+	size_t remaining_space;
+	size_t copy_length;
 	int i;
-	size_t neo_position = 0;
-	size_t neo_len = 0
+	size_t neo_len = 0;
 	va_list ag;
 
 	va_start(ag, n);
@@ -21,25 +17,29 @@ char mystrcat(int n, …)
 		neo_string = va_arg(ag, const char *);
 		full_len += mystrlen(neo_string);
 	}
+	va_end(ag);
+
 	dest = (char *)malloc(full_len + 1);
 	if (dest == NULL)
 	{
 		perror("Error (malloc)");
 		exit(EXIT_FAILURE);
 	}
-	va_end(ag);
+
+	dest[0] = '\0';
+
+	remaining_space = full_len;
+
 	va_start(ag, n);
 	for (i = 0; i < n; i++)
 	{
 		neo_string = va_arg(ag, const char *);
-		neo_len += mystrlen(neo_striing);
-		mystrcpy(dest + neo_position, neo_string);
-		neo_position += neo_len;
+		neo_len = mystrlen(neo_string);
+		copy_length = (remaining_space < neo_len) ? remaining_space : neo_len;
+		mystrcpy(dest + full_len - remaining_space, neo_string, copy_length);
+		remaining_space -= copy_length;
 	}
-	dest[full_len] = '\0';
 	va_end(ag);
-
-	free(dest);
-
+	dest[full_len] = '\0';
 	return (dest);
 }

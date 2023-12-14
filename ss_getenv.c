@@ -14,7 +14,7 @@ char *mygetenv(const char *pair)
 	for (p = environ; *p; p++)
 	{
 		token = strtok(*p, "=");
-		if (token && mystrlen(token) == len && mystrcmp(token, pair) == 0)
+		if (token && (size_t)mystrlen(token) == len && mystrcmp(token, pair) == 0)
 		{
 			return (strtok(NULL, "="));
 		}

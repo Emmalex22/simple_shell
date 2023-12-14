@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell.h"
 /**
  * mystrcpy - copy a string up to 'n' characters
  * @dest: destination to copy to
@@ -6,7 +6,7 @@
  * @n: number of characters to copy
  * Return: pointer to the destination string
  */
-char mystrcpy(char *dest, const char *src, size_t n)
+char *mystrcpy(char *dest, const char *src, size_t n)
 {
 	size_t j;
 
@@ -18,5 +18,4 @@ char mystrcpy(char *dest, const char *src, size_t n)
 	}
 	dest[j] = '\0';
 	return (dest);
-	}
 }
